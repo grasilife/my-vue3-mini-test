@@ -32,10 +32,10 @@ function mount(vnode, container) {
 }
 function patch(n1, n2) {
   console.log(n1, n2);
+  //const el = (n1.el = n1.el);这个主要解决，当新旧节点比较完，更新dom后，更新el到最新的el
+  const el = (n2.el = n1.el);
   if (n1.tag === n2.tag) {
     //比较props
-    //const el = (n1.el = n1.el);这个主要解决，当新旧节点比较完，更新dom后，更新el到最新的el
-    const el = (n1.el = n1.el);
     let oldProps = n1.props || {};
     let newProps = n2.props || {};
     for (let key in newProps) {
